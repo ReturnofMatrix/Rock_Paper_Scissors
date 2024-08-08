@@ -1,60 +1,78 @@
 let player_choice,comp_choice;
 let playerScore=0,compScore=0;
 
-for(let i=0 ; i<5 ; i++ ){
+const buttons = document.querySelector(".btn");
+const text =document.querySelector(".text");
 
-playRound(getComputerChoice(),getPlayerChoice());
+buttons.addEventListener("click",(event)=>{
+	let target=event.target;
 
-}
+	switch(target.id){
+		case 'rock': player_choice='rock';
+					break;
+		case 'paper': player_choice='paper';
+					break;
+		case 'scissors': player_choice='scissors';
+					break;
+	}
 
-if(playerScore===compScore){
-	console.log("Final Result : Its a Draw Match...")
-}else if(playerScore>compScore){
-	console.log("Final Result : Congratulations !!! You win.")
-}else{
-console.log("Final Result : You Lose.. Better luck next time.")
-}
+	console.log("You : "+player_choice);
+	getComputerChoice();
+	console.log("Computer : "+comp_choice);
+	playRound();
+	const score=document.querySelector(".score");
+	score.textContent=`Computer Score = ${compScore} 	Player Score = ${playerScore}`;
 
-function playRound(getComputerChoice,getPlayerChoice){
+	if(playerScore===5){
+		text.textContent="Final Result : Congratulations !!! You win.";
+	}else if(compScore===5){
+		text.textContent="Final Result : You Lose.. Better luck next time.";
+	}
+
+})
+
+
+function playRound(){
+
 	if(player_choice==="paper"){
 		if(comp_choice==="rock"){
-			console.log('You WIN ! Paper beats Rock');
+			text.textContent='You WIN ! Paper beats Rock';
 			playerScore++;
 		}
 		if(comp_choice==="scissors"){
-			console.log('You LOSE ! Scissors beats paper');
+			text.textContent='You LOSE ! Scissors beats paper';
 			compScore++;
 		}
 		if(comp_choice==="paper"){
-			console.log('Its DRAW ! Try again. ');
+			text.textContent='Its DRAW ! Try again. ';
 		}
 	};
 
 	if(player_choice==="rock"){
 		if(comp_choice==="scissors"){
-			console.log('You WIN ! Rock beats scissors.');
+			text.textContent='You WIN ! Rock beats scissors.';
 			playerScore++;
 		}
 		if(comp_choice==="paper"){
-			console.log('You LOSE ! Paper beats rock.');
+			text.textContent='You LOSE ! Paper beats rock.';
 			compScore++;
 		}
 		if(comp_choice==="rock"){
-			console.log('Its DRAW ! Try again. ');
+			text.textContent='Its DRAW ! Try again. ';
 		}
 	};
 
 	if(player_choice==="scissors"){
 		if(comp_choice==="paper"){
-			console.log('You WIN ! Scissors beats paper');
+			text.textContent='You WIN ! Scissors beats paper';
 			playerScore++;
 		}
 		if(comp_choice==="rock"){
-			console.log('You LOSE ! Rock beats Scissors.');
+			text.textContent='You LOSE ! Rock beats Scissors.';
 			compScore++;
 		}
 		if(comp_choice==="scissors"){
-			console.log('Its DRAW ! Try again. ');
+			text.textContent='Its DRAW ! Try again. ';
 		}
 	};
 
@@ -74,13 +92,6 @@ function getComputerChoice(){
 	}
 }
 
-function getPlayerChoice(){
-	player_choice=prompt("Choose between Rock , Paper or Scissors : ");	
-	player_choice.toLowerCase();
-	while(!(player_choice==="paper"||player_choice==="rock"||player_choice==="scissors")){
-	player_choice=prompt("Invalid input! \n Choose between Rock , Paper or Scissors . ");
-}
-}
 
 
 

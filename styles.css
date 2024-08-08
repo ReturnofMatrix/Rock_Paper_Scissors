@@ -1,0 +1,27 @@
+body{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    gap:50px;
+    /* align-items:center; */
+}
+button{
+    size:30px;
+    color:white;
+    background-color:black;
+    padding:10px;
+}
+.btn{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    margin-top:100px;
+}
+.text{
+    text-align:center;
+    margin-top:50px;
+}
+.score{
+    text-align:center;
+    margin-top:50px;
+}
